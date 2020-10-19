@@ -1,23 +1,40 @@
 <?php
 
-//echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"';
+/// Atila
+
+/**
+ * Front controller
+ *
+ * PHP version 7.3
+ */
+
+// Require the controller class
+//require '../App/Controllers/Posts.php';
 
 /**
  * Routing
  */
-require '../Core/Router.php';
+//require '../Core/Router.php';
 
-$router = new Router();
+/*
+ * Autoloader
+ */
+spl_autoload_register(function ($class) {
+  $root = dirname(__DIR__); // get the parent directory
+  $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
+  if (is_readable($file)) {
+    require $root . '/' . str_replace('\\', '/', $class) . '.php';
+  }
+});
 
-//echo get_class($router);
+$router = new Core\Router();
 
 // Add the routes
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
-$router->add('posts', ['controller' => 'Posts', 'action' => 'index']);
-//$router->add('posts/new', ['controller' => 'Posts', 'action' => 'new']);
 $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
 
+/*
 // Display the routing table
 echo '<pre>';
 // var_dump($router->getRoutes());
@@ -34,3 +51,6 @@ if ($router->match($url)) {
 } else {
   echo "No route found for URL '$url'";
 }
+*/
+
+$router->dispatch($_SERVER['QUERY_STRING']);
