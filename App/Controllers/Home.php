@@ -7,9 +7,36 @@ namespace App\Controllers;
  *
  * PHP version 7.3
  */
-class Home
+class Home extends \Core\Controller
 {
-  public function index()
+
+  /**
+   * Before filter
+   *
+   * @return void
+   */
+  protected function before()
+  {
+    echo "(before) ";
+    return false;
+  }
+
+  /**
+   * After filter
+   *
+   * @return void
+   */
+  protected function after()
+  {
+    echo " (after)";
+  }
+
+  /**
+   * Show the index page
+   *
+   * @return void
+   */
+  public function indexAction()
   {
     echo 'Hello from the index action of the Home controller!';
   }
