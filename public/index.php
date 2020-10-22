@@ -6,6 +6,15 @@
  * PHP version 7.3
  */
 
+/**
+ * Twig
+ */
+//require_once dirname(__DIR__) . '/vendor/twig/twig/lib/Twig/Autoloader.php';
+//Twig_Autoloader::register();
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+
+
 /*
  * Autoloader
  */

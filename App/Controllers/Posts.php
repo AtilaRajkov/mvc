@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use \Core\View;
+
 /**
  * Post controller
  *
@@ -17,9 +19,8 @@ class Posts extends \Core\Controller
    */
   public function indexAction()
   {
-    echo 'Hello from the index action in the Post controller!';
-    echo '<p>Query string parameters: <pre>' .
-        htmlspecialchars(print_r($_GET, true)). '</pre></p>';
+    //echo 'Hello from the index action in the Post controller!';
+    View::renderTemplate('Posts/index.html');
   }
 
   /**
